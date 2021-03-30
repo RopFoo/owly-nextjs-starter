@@ -1,5 +1,11 @@
 # Owly Next.js Starter
 
+Install:
+
+```bash
+ npx create-next-app my-app -e https://github.com/RopFoo/owly-nextjs-starter
+```
+
 ## Includes
 
 - sass
