@@ -1,19 +1,19 @@
 import client from '../apollo/apolloClient';
-import { Launch, LaunchesPastQuery } from '../generated/types';
+import { LaunchesPastQuery } from '../generated/types';
 import LAUNCHES from '../graphql/queries/launches.graphql';
 
 interface LaunchesProps {
-  launchesPastQuery: Launch[];
+  launchesPastQuery: LaunchesPastQuery;
 }
 
 const Launches: React.FC<LaunchesProps> = ({ launchesPastQuery }) => {
-  console.log(launchesPastQuery);
+  console.log(launchesPastQuery.launchesPast);
   return (
     <div>
       <h1>SpaceX Launches</h1>
-      {launchesPastQuery?.map((launch: Launch) => {
+      {launchesPastQuery?.launchesPast.map((launch) => {
         return (
-          <div>
+          <div key={launch.id}>
             <h1>{launch.mission_name}</h1>
             <p>{launch.rocket.rocket_name}</p>
           </div>
@@ -25,7 +25,7 @@ const Launches: React.FC<LaunchesProps> = ({ launchesPastQuery }) => {
 
 export async function getStaticProps() {
   const { data } = await client.query({ query: LAUNCHES });
-  const launchesPastQuery: LaunchesPastQuery = data.launchesPast;
+  const launchesPastQuery: LaunchesPastQuery = data;
 
   return { props: { launchesPastQuery } };
 }
