@@ -15,14 +15,20 @@ Install:
 
 ## GraphQL Setup
 
+pass schema URL to GRAPHQL_API variable in .env file
+
+```env
+GRAPHQL_API='https://api.spacex.land/graphql/'
+```
+
 ### Apollo
 
 coming soon
 
 ### GraphQL Code Generator
 
-pass schema URL to GRAPHQL_API variable in .env file
+to generate the corresponding typescript types run:
 
-```env
-GRAPHQL_API='https://api.spacex.land/graphql/'
+```bash
+ npm run generate
 ```
